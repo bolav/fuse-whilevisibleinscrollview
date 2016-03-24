@@ -1,0 +1,50 @@
+<App Theme="Basic">
+	<ClientPanel>
+		<ScrollView>
+			<StackPanel>
+				<SVPanel>
+					<Button Text="1" />
+				</SVPanel>
+				<Button Text="2" />
+				<Button Text="3" />
+				<Button Text="4" />
+				<Button Text="5" />
+				<Button Text="6" />
+				<Button Text="7" />
+				<Button Text="8" />
+				<Button Text="9" />
+				<SVPanel>
+					<Button Text="10" />
+					<WhileVisibleInScrollView>
+						<DebugAction Message="In view!" />
+					</WhileVisibleInScrollView>
+				</SVPanel>
+				<Button Text="11" />
+				<Button Text="12" />
+				<Button Text="13" />
+				<Button Text="14" />
+				<SVPanel>
+					<Button Text="15" />
+				</SVPanel>
+				<Button Text="16" />
+				<Button Text="17" />
+				<Button Text="18" />
+				<Button Text="19" />
+				<Button Text="20" />
+				<Button Text="21" />
+				<Button Text="22" />
+				<Button Text="23" />
+				<Button Text="24" />
+				<Button Text="25" />
+				<Button Text="26" />
+				<Button Text="27" />
+				<Button Text="28" />
+				<Button Text="29" />
+				<SVPanel>
+					<Button Text="30" />
+				</SVPanel>
+			</StackPanel>
+		</ScrollView>
+	</ClientPanel>
+</App>
+
