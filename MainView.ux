@@ -2,9 +2,11 @@
 	<ClientPanel>
 		<ScrollView>
 			<StackPanel>
-				<SVPanel>
-					<Button Text="1" />
-				</SVPanel>
+				<Button Text="1">
+				<WhileVisibleInScrollView>
+					<DebugAction Message="In view! 1" />
+				</WhileVisibleInScrollView>
+				</Button>
 				<Button Text="2" />
 				<Button Text="3" />
 				<Button Text="4" />
@@ -13,19 +15,23 @@
 				<Button Text="7" />
 				<Button Text="8" />
 				<Button Text="9" />
-				<SVPanel>
+				<Panel>
 					<Button Text="10" />
 					<WhileVisibleInScrollView>
-						<DebugAction Message="In view!" />
+						<DebugAction Message="In view! 10" />
 					</WhileVisibleInScrollView>
-				</SVPanel>
+				</Panel>
 				<Button Text="11" />
 				<Button Text="12" />
 				<Button Text="13" />
 				<Button Text="14" />
-				<SVPanel>
+				<Panel>
 					<Button Text="15" />
-				</SVPanel>
+					<WhileVisibleInScrollView>
+						<DebugAction Message="In view! 15" />
+					</WhileVisibleInScrollView>
+
+				</Panel>
 				<Button Text="16" />
 				<Button Text="17" />
 				<Button Text="18" />
@@ -40,9 +46,12 @@
 				<Button Text="27" />
 				<Button Text="28" />
 				<Button Text="29" />
-				<SVPanel>
+				<Panel>
 					<Button Text="30" />
-				</SVPanel>
+					<WhileVisibleInScrollView>
+						<DebugAction Message="In view! 30" />
+					</WhileVisibleInScrollView>
+				</Panel>
 			</StackPanel>
 		</ScrollView>
 	</ClientPanel>
