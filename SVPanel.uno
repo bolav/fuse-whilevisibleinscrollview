@@ -23,7 +23,7 @@ public class SVPanel : Panel
 		// Famous copy-paste pattern:
 		if (SVParent.AllowedScrollDirections == Fuse.Gestures.ScrollDirections.Vertical) {
 			if ((ActualPosition.Y <= SVParent.ScrollPosition.Y + SVParent.ActualSize.Y) && (
-				 ActualPosition.Y >= SVParent.ScrollPosition.Y)) {
+				 ActualPosition.Y + ActualSize.Y >= SVParent.ScrollPosition.Y)) {
 				if (!InView) {
 					InView = true;
 				}
@@ -69,7 +69,7 @@ public class SVPanel : Panel
 		// This currently only works for vertical scroll
 		if (SVParent.AllowedScrollDirections == Fuse.Gestures.ScrollDirections.Vertical) {
 			if ((ActualPosition.Y <= SVParent.ScrollPosition.Y + SVParent.ActualSize.Y) && (
-				 ActualPosition.Y >= SVParent.ScrollPosition.Y)) {
+				 ActualPosition.Y + ActualSize.Y >= SVParent.ScrollPosition.Y)) {
 				if (!InView) {
 					InView = true;
 					OnScrolledIntoView(SVParent);
