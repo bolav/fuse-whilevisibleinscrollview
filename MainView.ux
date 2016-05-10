@@ -3,7 +3,7 @@
 		<ScrollView>
 			<StackPanel>
 				<Button Text="1">
-				<WhileVisibleInScrollView>
+				<WhileVisibleInScrollView  KeepActive="true">
 					<DebugAction Message="In view! 1" />
 				</WhileVisibleInScrollView>
 				</Button>
@@ -48,7 +48,7 @@
 				<Button Text="29" />
 				<Panel>
 					<Button Text="30" />
-					<WhileVisibleInScrollView>
+					<WhileVisibleInScrollView  KeepActive="true">
 						<DebugAction Message="In view! 30" />
 					</WhileVisibleInScrollView>
 				</Panel>

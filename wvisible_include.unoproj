@@ -26,6 +26,6 @@
         "Uno.Geometry"
   ],
   "Includes": [
-    "*"
+    "WhileVisibleInScrollView.uno"
   ]
 }

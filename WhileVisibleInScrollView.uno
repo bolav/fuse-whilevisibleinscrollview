@@ -15,6 +15,11 @@ public class WhileVisibleInScrollView : WhileTrigger
 		get { return _dir; }
 		set { _dir = value; }
 	}
+	bool _ka = false;
+	public bool KeepActive {
+		get { return _ka; }
+		set { _ka = value; }
+	}
 
 	ScrollView FindSV (Node n) {
 		if (n is Fuse.Controls.ScrollView) {
@@ -83,6 +88,7 @@ public class WhileVisibleInScrollView : WhileTrigger
 		return false;
 	}
 
+	bool _first = true;
 	public void OnScrollPositionChanged(object sender, ScrollPositionChangedArgs args) {
 		// This currently only works for vertical scroll
 		if (CheckInView()) {
@@ -93,10 +99,13 @@ public class WhileVisibleInScrollView : WhileTrigger
 		}
 		else {
 			if (InView) {
-				InView = false;
-				Deactivate();
+				if (!KeepActive || _first) {
+					InView = false;
+					Deactivate();
+				}
 			}
 		}
+		_first = false; // Hack, since the size is not fished on OnRooted (all become true)
 	}
 
 }
