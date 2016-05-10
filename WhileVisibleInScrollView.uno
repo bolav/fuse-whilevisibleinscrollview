@@ -4,10 +4,17 @@ using Fuse;
 using Fuse.Controls;
 using Fuse.Triggers;
 using Fuse.Elements;
+using Fuse.Gestures;
 public class WhileVisibleInScrollView : WhileTrigger
 {
 	ScrollView SVParent;
 	Element Parent;
+
+	ScrollDirections _dir = ScrollDirections.All;
+	public ScrollDirections Direction {
+		get { return _dir; }
+		set { _dir = value; }
+	}
 
 	ScrollView FindSV (Node n) {
 		if (n is Fuse.Controls.ScrollView) {
