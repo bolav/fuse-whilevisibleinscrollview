@@ -5,10 +5,12 @@ using Fuse.Controls;
 using Fuse.Triggers;
 using Fuse.Elements;
 using Fuse.Gestures;
+using Uno.UX;
+
 public class WhileVisibleInScrollView : WhileTrigger
 {
 	ScrollView SVParent;
-	Element Parent;
+	Element ElementParent;
 
 	ScrollDirections _dir = ScrollDirections.All;
 	public ScrollDirections Direction {
@@ -21,33 +23,22 @@ public class WhileVisibleInScrollView : WhileTrigger
 		set { _ka = value; }
 	}
 
-	ScrollView FindSV (Node n) {
-		if (n is Fuse.Controls.ScrollView) {
-			var sv = n as Fuse.Controls.ScrollView;
-			return sv;
-		}
-		if (n.Parent == null) {
-			return null;
-		}
-		return FindSV(n.Parent);
-	}
-
 	public bool InView = false;
 
-	protected override void OnRooted(Node parentNode)
+	protected override void OnRooted()
 	{
-		base.OnRooted(parentNode);
-		if (parentNode is Element) {
-			Parent = parentNode as Element;
+		base.OnRooted();
+		if (Parent is Element) {
+			ElementParent = Parent as Element;
 		}
 		else {
-			Diagnostics.Error("Warning: "+this+" needs to be attached to an Element. Was attached to: "+ParentNode, this);
+			Diagnostics.UserRootError("Element", Parent, this);
 			return;
 		}
 
-		SVParent = FindSV(parentNode);
+		SVParent = Parent.FindByType<ScrollView>();
 		if (SVParent == null) {
-			Diagnostics.Error("Warning: "+this+" needs to be inside a ScrollView. Was attached to: "+ParentNode, this);
+			Diagnostics.UserRootError("ScrollView", Parent, this);
 			return;
 		}
 
@@ -63,22 +54,21 @@ public class WhileVisibleInScrollView : WhileTrigger
 		}
 	}
 
-	protected override void OnUnrooted(Node parentNode)
+	protected override void OnUnrooted()
 	{
 		if (SVParent != null)
 		{
 			SVParent.ScrollPositionChanged -= OnScrollPositionChanged;
 		}
 		SVParent = null;
-		Parent = null;
-		base.OnUnrooted(parentNode);
+		base.OnUnrooted();
 	}
 
 	// TODO: Make support for full in view / partial
 	public bool CheckInView() {
-		if (SVParent.AllowedScrollDirections == Fuse.Gestures.ScrollDirections.Vertical) {
-			if ((Parent.ActualPosition.Y <= SVParent.ScrollPosition.Y + SVParent.ActualSize.Y) && (
-				 Parent.ActualPosition.Y + Parent.ActualSize.Y >= SVParent.ScrollPosition.Y)) {
+		if (SVParent.AllowedScrollDirections == ScrollDirections.Vertical) {
+			if ((ElementParent.ActualPosition.Y <= SVParent.ScrollPosition.Y + SVParent.ActualSize.Y) && (
+				 ElementParent.ActualPosition.Y + ElementParent.ActualSize.Y >= SVParent.ScrollPosition.Y)) {
 				return true;
 			}
 			else {
@@ -89,7 +79,7 @@ public class WhileVisibleInScrollView : WhileTrigger
 	}
 
 	bool _first = true;
-	public void OnScrollPositionChanged(object sender, ScrollPositionChangedArgs args) {
+	public void OnScrollPositionChanged(object sender, ValueChangedArgs<float2> args) {
 		// This currently only works for vertical scroll
 		if (CheckInView()) {
 			if (!InView) {
