@@ -1,4 +1,4 @@
-WhileVisibleInScrollView Fuse trigger [![Build Status](https://travis-ci.org/bolav/fuse-whilevisibleinscrollview.svg?branch=master)](https://travis-ci.org/bolav/fuse-whilevisibleinscrollview)
+WhileVisibleInScrollView Fuse trigger [![Build Status](https://travis-ci.org/bolav/fuse-whilevisibleinscrollview.svg?branch=master)](https://travis-ci.org/bolav/fuse-whilevisibleinscrollview) ![Fuse Version](http://fuse-version.herokuapp.com/?repo=https://github.com/bolav/fuse-whilevisibleinscrollview)
 =====================================
 
 A trigger for [Fuse](http://www.fusetools.com/), for when elements are visible in a ScrollView.
